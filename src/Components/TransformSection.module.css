@@ -1,0 +1,64 @@
+/* Theme */
+.wrapper {
+  position: relative;
+  background: radial-gradient(1200px 400px at 50% 100%, rgba(0, 195, 255, 0.2), transparent 60%),
+              radial-gradient(900px 300px at 60% 110%, rgba(0, 255, 157, 0.18), transparent 60%),
+              #000;
+  color: #fff;
+  padding: 96px 20px 120px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.kicker {
+  color: #ffd98c;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 16px auto 28px;
+  max-width: 860px;
+  color: #cfd6dc;
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+}
+
+.ctaRow { display: flex; justify-content: center; }
+
+.ctaPrimary {
+  background: linear-gradient(90deg, #00c3ff, #00ff9d);
+  color: #000;
+  font-weight: 800;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.ctaPrimary:hover { opacity: 0.95; transform: translateY(-2px); }
+
+/* Decorative orb */
+.orb {
+  position: absolute;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 350px;
+  background: radial-gradient(closest-side, rgba(0, 195, 255, 0.5), rgba(0, 255, 157, 0.35), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}

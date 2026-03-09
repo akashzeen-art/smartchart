@@ -1,0 +1,199 @@
+/* Hero layout */
+.heroSection {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Background video (centered + slow zoom) */
+  .videoBackground {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: 0;
+    /* hardware acceleration के लिए */
+    will-change: transform;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    /* slow cinematic zoom - ऑप्टिमाइज़ किया गया */
+    animation: videoZoom 25s ease-in-out infinite alternate;
+  }
+  
+  /* Reduced motion users shouldn't get the zoom animation */
+  @media (prefers-reduced-motion: reduce) {
+    .videoBackground {
+      animation: none;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  @keyframes videoZoom {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+  }
+  
+  /* Dark overlay so text remains readable */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.8) 20%,
+      rgba(0, 0, 0, 0.6) 40%,
+      rgba(0, 0, 0, 0.4) 60%,
+      rgba(0, 0, 0, 0.2) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 1;
+  }
+  
+  /* Foreground content */
+  .heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 22px;
+    max-width: 1100px;
+    width: 100%;
+    animation: fadeIn 1s ease both;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Heading sizes responsive */
+  .mainHeading {
+    margin: 0;
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    font-size: clamp(2rem, 6.5vw, 3.6rem);
+  }
+  
+  /* The animated word — color applied inline from React for reliability */
+  .typeWrapper {
+    display: inline-block;
+    margin-left: 6px;
+    white-space: nowrap;
+    font-weight: 800;
+  }
+  
+  /* Blinking cursor */
+  .cursor {
+    display: inline-block;
+    margin-left: 4px;
+    opacity: 1;
+    animation: blink 0.8s steps(2, start) infinite;
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  /* Subheading */
+  .subHeading {
+    margin-top: 18px;
+    font-size: clamp(0.95rem, 2.1vw, 1.15rem);
+    opacity: 0.95;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Buttons */
+  .btnGroup {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  
+  .ctaBtnPrimary {
+    background: linear-gradient(90deg, #00c3ff, #00ff9d);
+    color: #000;
+    font-weight: 800;
+    padding: 16px 36px; /* Bigger padding */
+    font-size: 1.15rem; /* Bigger font */
+    border-radius: 12px;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 8px 22px rgba(0, 255, 157, 0.15), 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .ctaBtnPrimary:hover {
+    transform: translateY(-4px) scale(1.02);
+    opacity: 0.95;
+    box-shadow: 0 12px 28px rgba(0, 255, 157, 0.45), 0 6px 16px rgba(0, 0, 0, 0.25);
+  }
+  
+
+  .ctaBtnSecondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  
+  .ctaBtnSecondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+    color: #ffffff;
+  }
+
+  .ctaBtnTertiary {
+    background: rgba(0, 195, 255, 0.1);
+    color: #00c3ff;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 2px solid rgba(0, 195, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .ctaBtnTertiary:hover {
+    background: rgba(0, 195, 255, 0.2);
+    border-color: rgba(0, 195, 255, 0.5);
+    transform: translateY(-3px);
+    color: #00c3ff;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .heroContent {
+      padding: 0 16px;
+    }
+    .subHeading {
+      margin-top: 14px;
+    }
+    .btnGroup { margin-top: 20px; }
+  }
+  
