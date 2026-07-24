@@ -112,6 +112,23 @@
   color: #00c3ff;
 }
 
+.myProfileBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 5px 4px;
+  margin-left: 18px;
+  letter-spacing: 0.3px;
+}
+
+.myProfileBtn:hover {
+  color: #00c3ff;
+}
+
 .langBtn {
   background: #1a1a1a;
   border: 1px solid #333;

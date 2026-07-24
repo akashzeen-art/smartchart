@@ -111,17 +111,16 @@ const Navbar = () => {
                   <FaBell className={styles.icon} />
                 </li>
                 
-                {/* Profile Dropdown */}
+                {/* My Profile / Auth */}
                 {isLoggedIn ? (
                   <li className="nav-item dropdown">
                     <button
-                      className={styles.profileBtn}
+                      className={styles.myProfileBtn}
                       id="profileDropdown"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
-                      onClick={openProfileModal}
                     >
-                      <FaUserCircle className={styles.icon} />
+                      My Profile
                     </button>
                     <ul className={`dropdown-menu dropdown-menu-end ${styles.customDropdown}`} aria-labelledby="profileDropdown">
                       <li><button className={`dropdown-item ${styles.dropdownItem}`} onClick={openProfileModal}>{t.navbar.profileSettings}</button></li>
@@ -133,12 +132,12 @@ const Navbar = () => {
                 ) : (
                   <li className="nav-item dropdown">
                     <button
-                      className={styles.profileBtn}
+                      className={styles.myProfileBtn}
                       id="profileDropdown"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <FaUserCircle className={styles.icon} />
+                      My Profile
                     </button>
                     <ul className={`dropdown-menu dropdown-menu-end ${styles.customDropdown}`} aria-labelledby="profileDropdown">
                       <li><button className={`dropdown-item ${styles.dropdownItem}`} onClick={() => openAuthModal("signin")}>{t.navbar.signIn}</button></li>
